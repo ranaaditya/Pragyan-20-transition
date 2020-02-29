@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,9 +8,19 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
-<ImageView
-    android:id="@+id/image"
-    android:layout_width="200dp"
-    android:layout_height="200dp"
-    />
+    <com.rana_aditya.pragyan_transition.TilesFrameLayout
+        android:id="@+id/tiles_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:sw_animationDuration="1500"
+        app:sw_numberOfTilesX="200">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo"
+            android:onClick="blast"/>
+
+    </com.rana_aditya.pragyan_transition.TilesFrameLayout>
 </LinearLayout>
