@@ -4,9 +4,9 @@ import com.rana_aditya.pragyan_transition.Const;
 
 @SuppressWarnings("ForLoopReplaceableByForEach")
 public class GenerateVerticesData implements Runnable {
-    private final StarWarsRenderer mStarWarsRenderer;
+    private final TilesLayoutRenderer mStarWarsRenderer;
 
-    public GenerateVerticesData(StarWarsRenderer starWarsRenderer) {
+    public GenerateVerticesData(TilesLayoutRenderer starWarsRenderer) {
         mStarWarsRenderer = starWarsRenderer;
     }
     @Override
@@ -37,7 +37,7 @@ public class GenerateVerticesData implements Runnable {
                     mStarWarsRenderer.mPlane = null;
                 }
 
-                mStarWarsRenderer.mPlane = new StarWarsTiles(
+                mStarWarsRenderer.mPlane = new Tiles(
                         mStarWarsRenderer,
                         Buffers.makeInterleavedBuffer(
                                 positionData,

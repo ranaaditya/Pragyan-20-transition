@@ -7,11 +7,11 @@ import com.rana_aditya.pragyan_transition.interfaces.Renderable;
 
 import java.nio.FloatBuffer;
 
-public class StarWarsTiles implements Renderable {
+public class Tiles implements Renderable {
     private final int mBufferId;
-    private final StarWarsRenderer mRenderer;
+    private final TilesLayoutRenderer mRenderer;
 
-    public StarWarsTiles(StarWarsRenderer renderer, FloatBuffer vboBuffer) {
+    public Tiles(TilesLayoutRenderer renderer, FloatBuffer vboBuffer) {
         this.mRenderer = renderer;
 
         // copy the buffer into OpenGL's memory

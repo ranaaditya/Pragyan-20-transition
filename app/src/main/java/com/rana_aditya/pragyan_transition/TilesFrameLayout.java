@@ -17,12 +17,12 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
 import com.rana_aditya.pragyan_transition.interfaces.TilesFrameLayoutListener;
-import com.rana_aditya.pragyan_transition.render.StarWarsRenderer;
-import com.rana_aditya.pragyan_transition.widget.StarWarsTilesGLSurfaceView;
+import com.rana_aditya.pragyan_transition.render.TilesLayoutRenderer;
+import com.rana_aditya.pragyan_transition.widget.TilesGLSurfaceView;
 
 public class TilesFrameLayout extends FrameLayout {
-    private StarWarsTilesGLSurfaceView mGLSurfaceView;
-    private StarWarsRenderer mRenderer;
+    private TilesGLSurfaceView mGLSurfaceView;
+    private TilesLayoutRenderer mRenderer;
     private TilesFrameLayoutListener mListener;
     private int mAnimationDuration;
     private int mNumberOfTilesX;
@@ -71,7 +71,7 @@ public class TilesFrameLayout extends FrameLayout {
     }
 
     private void initGlSurfaceView() {
-        mGLSurfaceView = new StarWarsTilesGLSurfaceView(getContext());
+        mGLSurfaceView = new TilesGLSurfaceView(getContext());
         mGLSurfaceView.setBackgroundColor(Color.TRANSPARENT);
 
         // Check if the system supports OpenGL ES 2.0.
@@ -83,7 +83,7 @@ public class TilesFrameLayout extends FrameLayout {
             // Request an OpenGL ES 2.0 compatible context.
             mGLSurfaceView.setEGLContextClientVersion(2);
 
-            mRenderer = new StarWarsRenderer(mGLSurfaceView, this, mAnimationDuration, mNumberOfTilesX);
+            mRenderer = new TilesLayoutRenderer(mGLSurfaceView, this, mAnimationDuration, mNumberOfTilesX);
             mGLSurfaceView.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
             mGLSurfaceView.getHolder().setFormat(PixelFormat.TRANSPARENT);
             mGLSurfaceView.setRenderer(mRenderer);

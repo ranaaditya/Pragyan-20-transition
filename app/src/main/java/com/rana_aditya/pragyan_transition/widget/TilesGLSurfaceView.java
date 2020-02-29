@@ -4,16 +4,16 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 
-import com.rana_aditya.pragyan_transition.render.StarWarsRenderer;
+import com.rana_aditya.pragyan_transition.render.TilesLayoutRenderer;
 
-public class StarWarsTilesGLSurfaceView extends GLSurfaceView {
-    private StarWarsRenderer mRenderer;
+public class TilesGLSurfaceView extends GLSurfaceView {
+    private TilesLayoutRenderer mRenderer;
 
-    public StarWarsTilesGLSurfaceView(Context context) {
+    public TilesGLSurfaceView(Context context) {
         super(context);
     }
 
-    public StarWarsTilesGLSurfaceView(Context context, AttributeSet attrs) {
+    public TilesGLSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -23,7 +23,7 @@ public class StarWarsTilesGLSurfaceView extends GLSurfaceView {
         mRenderer.cancelAnimation();
     }
 
-    public void setRenderer(StarWarsRenderer renderer) {
+    public void setRenderer(TilesLayoutRenderer renderer) {
         super.setRenderer(renderer);
         mRenderer = renderer;
     }

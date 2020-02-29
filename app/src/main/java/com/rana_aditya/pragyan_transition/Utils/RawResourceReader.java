@@ -1,6 +1,7 @@
 package com.rana_aditya.pragyan_transition.Utils;
 
 import android.content.Context;
+import android.util.Log;
 
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ public class RawResourceReader {
                 body.append(line).append('\n');
             }
         } catch (IOException e) {
+            Log.d("ERROR IN READING : ",e.toString());
             return null;
         }
 

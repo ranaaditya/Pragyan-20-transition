@@ -16,20 +16,20 @@ import com.rana_aditya.pragyan_transition.TilesFrameLayout;
 import com.rana_aditya.pragyan_transition.Utils.RawResourceReader;
 import com.rana_aditya.pragyan_transition.Utils.ShaderHelper;
 import com.rana_aditya.pragyan_transition.Utils.TextureHelper;
-import com.rana_aditya.pragyan_transition.widget.StarWarsTilesGLSurfaceView;
+import com.rana_aditya.pragyan_transition.widget.TilesGLSurfaceView;
 
 import java.util.concurrent.Executors;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 
-public class StarWarsRenderer implements  GLSurfaceView.Renderer  {
+public class TilesLayoutRenderer implements  GLSurfaceView.Renderer  {
 
     /** Store the accumulated rotation. */
     private final float[] mAccumulatedRotation = new float[16];
     /** Store the current rotation. */
     private final float[] mCurrentRotation = new float[16];
-    public StarWarsTiles mPlane;
+    public Tiles mPlane;
     public GLSurfaceView mGlSurfaceView;
     public float ratio;
     public int mvpMatrixHandle;
@@ -71,9 +71,9 @@ public class StarWarsRenderer implements  GLSurfaceView.Renderer  {
     private boolean requestedReveal;
 
 
-    public StarWarsRenderer(StarWarsTilesGLSurfaceView glSurfaceView,
-                            TilesFrameLayout TilesFrameLayout,
-                            int animationDuration, int numberOfTilesX) {
+    public TilesLayoutRenderer(TilesGLSurfaceView glSurfaceView,
+                               TilesFrameLayout TilesFrameLayout,
+                               int animationDuration, int numberOfTilesX) {
         mGlSurfaceView = glSurfaceView;
         mListener = TilesFrameLayout;
         mAnimationDuration = animationDuration;
