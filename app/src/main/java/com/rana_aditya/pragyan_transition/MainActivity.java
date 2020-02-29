@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tilesFrameLayout = findViewById(R.id.tiles_frame_layout);
         mGlSurfaceView = findViewById(R.id.gl_surface_view);
-        //imageView = findViewById(R.id.image);
+        imageView = findViewById(R.id.image);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
         now = System.currentTimeMillis();
-       // pixelate(bitmap,bitmap,imageView,resolution);
+        pixelate(bitmap,bitmap,imageView,resolution);
         final ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         final ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
         final boolean supportsEs2 = configurationInfo.reqGlEsVersion >= 0x20000;
