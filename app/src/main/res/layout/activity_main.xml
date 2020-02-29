@@ -15,23 +15,33 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.rana_aditya.pragyan_transition.TilesFrameLayout
-        android:id="@+id/tiles_frame_layout"
+<!--    <com.rana_aditya.pragyan_transition.TilesFrameLayout-->
+<!--        android:id="@+id/tiles_frame_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/gl_surface_view"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:sw_animationDuration="1500"-->
+<!--        app:sw_numberOfTilesX="200">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/image"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:onClick="blast"-->
+<!--            android:src="@drawable/logo" />-->
+
+<!--    </com.rana_aditya.pragyan_transition.TilesFrameLayout>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="@+id/gl_surface_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:sw_animationDuration="1500"
-        app:sw_numberOfTilesX="200">
-
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="blast"
-            android:src="@drawable/logo" />
-
-    </com.rana_aditya.pragyan_transition.TilesFrameLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

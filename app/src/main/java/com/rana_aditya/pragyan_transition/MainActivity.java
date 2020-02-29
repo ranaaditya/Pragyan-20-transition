@@ -12,7 +12,10 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.rana_aditya.pragyan_transition.CircularRecycler.Adapter;
+import com.rana_aditya.pragyan_transition.CircularRecycler.CircularRecyclerLayoutManager;
 import com.rana_aditya.pragyan_transition.ParticleSystem.Util.ParticleSystemRenderer;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,18 +26,20 @@ public class MainActivity extends AppCompatActivity {
     int resolution = 25;
     TilesFrameLayout tilesFrameLayout;
     GLSurfaceView mGlSurfaceView;
-
+     RecyclerView circularRecycler;
+     CircularRecyclerLayoutManager circularRecyclerLayoutManager = new CircularRecyclerLayoutManager();
+    Adapter circularAdapter=new Adapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tilesFrameLayout = findViewById(R.id.tiles_frame_layout);
+       // tilesFrameLayout = findViewById(R.id.tiles_frame_layout);
         mGlSurfaceView = findViewById(R.id.gl_surface_view);
-        imageView = findViewById(R.id.image);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
-        now = System.currentTimeMillis();
-        pixelate(bitmap,bitmap,imageView,resolution);
+        //imageView = findViewById(R.id.image);
+        //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
+        //now = System.currentTimeMillis();
+        //pixelate(bitmap,bitmap,imageView,resolution);
         final ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         final ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
         final boolean supportsEs2 = configurationInfo.reqGlEsVersion >= 0x20000;
@@ -50,18 +55,35 @@ public class MainActivity extends AppCompatActivity {
         } else {
             throw new UnsupportedOperationException();
         }
+        circularRecyclerLayoutManager .initialize(
+                6,
+                60.0,
+                200.0,
+                180.0,
+                false,
+                true,
+                180.0,
+                true
+        );
+        circularRecycler = findViewById(R.id.main_recycler);
+        circularRecycler.setLayoutManager(circularRecyclerLayoutManager);
+        circularRecycler.setAdapter(circularAdapter);
+
+
+
+
 
     }
     @Override
     public void onResume() {
         super.onResume();
-        tilesFrameLayout.onResume();
+//        tilesFrameLayout.onResume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        tilesFrameLayout.onPause();
+       // tilesFrameLayout.onPause();
     }
     public void pixelate(@NonNull final Bitmap in, @NonNull final Bitmap out, final ImageView imageView, final int resolution) {
         if (in == null) return;
@@ -81,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void blast(View view) {
-        tilesFrameLayout.startAnimation();
+        //tilesFrameLayout.startAnimation();
     }
 }
 
