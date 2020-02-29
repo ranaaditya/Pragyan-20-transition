@@ -4,16 +4,13 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ConfigurationInfo;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.rana_aditya.pragyan_transition.CircularRecycler.Adapter;
 import com.rana_aditya.pragyan_transition.CircularRecycler.CircularRecyclerLayoutManager;
 import com.rana_aditya.pragyan_transition.ParticleSystem.Util.ParticleSystemRenderer;
@@ -26,15 +23,15 @@ public class MainActivity extends AppCompatActivity {
     int resolution = 25;
     TilesFrameLayout tilesFrameLayout;
     GLSurfaceView mGlSurfaceView;
-     RecyclerView circularRecycler;
-     CircularRecyclerLayoutManager circularRecyclerLayoutManager = new CircularRecyclerLayoutManager();
-    Adapter circularAdapter=new Adapter();
+    RecyclerView circularRecycler;
+    CircularRecyclerLayoutManager circularRecyclerLayoutManager = new CircularRecyclerLayoutManager();
+    Adapter circularAdapter = new Adapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // tilesFrameLayout = findViewById(R.id.tiles_frame_layout);
+        // tilesFrameLayout = findViewById(R.id.tiles_frame_layout);
         mGlSurfaceView = findViewById(R.id.gl_surface_view);
         //imageView = findViewById(R.id.image);
         //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
@@ -55,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             throw new UnsupportedOperationException();
         }
-        circularRecyclerLayoutManager .initialize(
+        circularRecyclerLayoutManager.initialize(
                 6,
                 60.0,
                 200.0,
@@ -70,10 +67,8 @@ public class MainActivity extends AppCompatActivity {
         circularRecycler.setAdapter(circularAdapter);
 
 
-
-
-
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -83,8 +78,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();
-       // tilesFrameLayout.onPause();
+        // tilesFrameLayout.onPause();
     }
+
     public void pixelate(@NonNull final Bitmap in, @NonNull final Bitmap out, final ImageView imageView, final int resolution) {
         if (in == null) return;
 

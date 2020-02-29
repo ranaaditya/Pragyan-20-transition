@@ -10,10 +10,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-      //  Fabric.with(this, new Crashlytics());
         app = this;
-
-       // Timber.plant(new Timber.DebugTree());
     }
 
     public static Context getAppContext() {
