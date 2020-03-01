@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -34,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // tilesFrameLayout = findViewById(R.id.tiles_frame_layout);
+        tilesFrameLayout = findViewById(R.id.tiles_frame_layout);
         mGlSurfaceView = findViewById(R.id.gl_surface_view);
-        //imageView = findViewById(R.id.image);
+        imageView = findViewById(R.id.image);
         //bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
         //now = System.currentTimeMillis();
         //pixelate(bitmap,bitmap,imageView,resolution);
@@ -65,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 180.0,
                 true
         );
-        circularRecycler = findViewById(R.id.main_recycler);
-        circularRecycler.setLayoutManager(circularRecyclerLayoutManager);
-        circularRecycler.setAdapter(circularAdapter);
+//        circularRecycler = findViewById(R.id.main_recycler);
+//        circularRecycler.setLayoutManager(circularRecyclerLayoutManager);
+//        circularRecycler.setAdapter(circularAdapter);
 
 
 
@@ -77,13 +78,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-//        tilesFrameLayout.onResume();
+        tilesFrameLayout.onResume();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-       // tilesFrameLayout.onPause();
+        tilesFrameLayout.onPause();
     }
     public void pixelate(@NonNull final Bitmap in, @NonNull final Bitmap out, final ImageView imageView, final int resolution) {
         if (in == null) return;
@@ -103,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void blast(View view) {
-        //tilesFrameLayout.startAnimation();
+        Log.d("RESUESTING BLAST","CALLING");
+        tilesFrameLayout.startAnimation();
     }
 }
 
