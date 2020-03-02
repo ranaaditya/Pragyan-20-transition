@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layout_main"
     android:background="#000000"
     android:gravity="center"
     tools:context=".MainActivity">
@@ -35,9 +36,10 @@
             app:sw_numberOfTilesX="650">
         <ImageView
             android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="2500dp"
+            android:layout_height="250dp"
             android:onClick="blast"
+            android:layout_gravity="center"
             android:src="@drawable/logo" />
         </com.rana_aditya.pragyan_transition.TilesFrameLayout>
 

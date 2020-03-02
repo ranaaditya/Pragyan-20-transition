@@ -5,11 +5,15 @@ import android.content.Context;
 import android.content.pm.ConfigurationInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +22,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.rana_aditya.pragyan_transition.CircularRecycler.Adapter;
 import com.rana_aditya.pragyan_transition.CircularRecycler.CircularRecyclerLayoutManager;
 import com.rana_aditya.pragyan_transition.ParticleSystem.Util.ParticleSystemRenderer;
+
+import java.io.ByteArrayOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,9 +77,15 @@ public class MainActivity extends AppCompatActivity {
 //        circularRecycler.setAdapter(circularAdapter);
 
 
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View inflatedFrame = inflater.inflate(R.layout.activity_main, null);
+        Bitmap bitmap = createBitmapFromView(inflatedFrame.findViewById(R.id.layout_main));
 
+        if (bitmap==null) Log.d("NULL","XXXX");
 
-
+        String string = convert(bitmap);
+        Log.d("LOG",string);
+        imageView.setImageBitmap(bitmap);
     }
     @Override
     public void onResume() {
@@ -106,6 +118,28 @@ public class MainActivity extends AppCompatActivity {
     public void blast(View view) {
         Log.d("RESUESTING BLAST","CALLING");
         tilesFrameLayout.startAnimation();
+    }
+    public Bitmap createBitmapFromView(View v) {
+        v.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT));
+        v.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+        Bitmap bitmap = Bitmap.createBitmap(v.getMeasuredWidth(),
+                v.getMeasuredHeight(),
+                Bitmap.Config.ARGB_8888);
+
+        Canvas c = new Canvas(bitmap);
+        v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+        v.draw(c);
+        return bitmap;
+    }
+
+    public static String convert(Bitmap bitmap)
+    {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+        return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
     }
 }
 
