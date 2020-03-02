@@ -8,6 +8,7 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
 import com.rana_aditya.pragyan_transition.Const;
@@ -131,6 +132,8 @@ public class StarWarsRenderer implements  GLSurfaceView.Renderer  {
     public void onSurfaceChanged(GL10 unused, int width, int height) {
         sizeX = mNumberOfTilesX;
         sizeY = height * sizeX /  width;
+
+        Log.e("KR$NA",width + " : "+height);
 
         // Set the OpenGL viewport to the same size as the surface.
         GLES20.glViewport(0, 0, width, height);

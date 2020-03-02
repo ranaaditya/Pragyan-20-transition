@@ -13,13 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:sw_animationDuration="1500"
-        app:sw_numberOfTilesX="200">
+        app:sw_numberOfTilesX="4">
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/logo"
+            android:onClick="blast"/>-->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/parent_layout"
             android:onClick="blast"/>
 
     </com.rana_aditya.pragyan_transition.TilesFrameLayout>
