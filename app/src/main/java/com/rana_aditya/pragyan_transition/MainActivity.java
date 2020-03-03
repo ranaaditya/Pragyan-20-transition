@@ -1,9 +1,14 @@
 package com.rana_aditya.pragyan_transition;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Base64;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,6 +18,8 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
+
 public class MainActivity extends AppCompatActivity {
 
     Bitmap bitmap;
@@ -21,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     int resolution = 25;
     TilesFrameLayout tilesFrameLayout;
     FrameLayout parentView;
+    LinearLayout linearLayout;
     DisplayMetrics displayMetrics;
     int deviceWidth;
     int deviceHeight;
@@ -36,15 +44,34 @@ public class MainActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         deviceWidth = displayMetrics.widthPixels;
         deviceHeight = displayMetrics.heightPixels;
-        PixelationView pixelationView = new PixelationView(this, parentView, deviceWidth, deviceHeight);
-        layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT);
-        parentView.addView(pixelationView, layoutParams);
+        linearLayout = findViewById(R.id.lay);
+        Handler handler= new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setPixelationView();
+            }
+        },100);
         //imageView = findViewById(R.id.image);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.google);
         now = System.currentTimeMillis();
        // pixelate(bitmap,bitmap,imageView,resolution);
 
 
+    }
+    void setPixelationView(){
+        Bitmap bitmap =getBitmapFromView(linearLayout);
+        PixelationView pixelationView = new PixelationView(this, parentView, bitmap, tilesFrameLayout, deviceWidth, deviceHeight);
+        layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,RelativeLayout.LayoutParams.MATCH_PARENT);
+        parentView.addView(pixelationView, layoutParams);
+
+    }
+    public Bitmap getBitmapFromView(View view)
+    {
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        view.draw(canvas);
+        return bitmap;
     }
     @Override
     public void onResume() {
@@ -72,10 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 }, 100);
             }
         }).start();
-    }
-
-    public void blast(View view) {
-        tilesFrameLayout.startAnimation();
     }
 }
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#ffca28"
+    android:id="@+id/lay"
     android:gravity="center"
     tools:context=".MainActivity">
 
@@ -13,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:sw_animationDuration="1500"
-        app:sw_numberOfTilesX="4">
+        app:sw_numberOfTilesX="12">
 
         <!--<ImageView
             android:id="@+id/image"
@@ -26,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/parent_layout"
-            android:onClick="blast"/>
+            android:background="@drawable/background"/>
 
     </com.rana_aditya.pragyan_transition.TilesFrameLayout>
 </LinearLayout>

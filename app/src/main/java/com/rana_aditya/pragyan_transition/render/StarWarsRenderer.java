@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 
 import com.rana_aditya.pragyan_transition.Const;
 import com.rana_aditya.pragyan_transition.R;

@@ -20,6 +20,7 @@ public class PixelationView extends View {
     int deviceHeight;
     int[][] deviceGrid;
     Bitmap bitmap;
+    TilesFrameLayout tilesFrameLayout;
     View view;
     Paint paint;
     Context mContext;
@@ -27,7 +28,7 @@ public class PixelationView extends View {
     int frame = 0;
     int div = 1;
 
-    public PixelationView(Context context, View view, int width, int height) {
+    public PixelationView(Context context, View view, Bitmap bitmap, TilesFrameLayout tilesFrameLayout, int width, int height) {
         super(context);
         this.view = view;
         deviceWidth = width;
@@ -44,20 +45,24 @@ public class PixelationView extends View {
         bitmap = Bitmap.createBitmap(view.getDrawingCache());
         view.setDrawingCacheEnabled(false);*/
 
-        bitmap = BitmapFactory.decodeResource(
+        /*bitmap = BitmapFactory.decodeResource(
                 getResources(),
                 R.drawable.background
         );
-        bitmap = Bitmap.createScaledBitmap(bitmap, deviceWidth, deviceHeight, false);
+        bitmap = Bitmap.createScaledBitmap(bitmap, deviceWidth, deviceHeight, false);*/
+
+        this.bitmap = bitmap;
+        this.tilesFrameLayout = tilesFrameLayout;
+
+        Log.e("KR$NA", deviceWidth + " : " + deviceHeight + " : " + bitmap.getWidth() + " : " + bitmap.getHeight());
 
 
-        for (int i = 0; i < deviceHeight; i++) {
-            for (int j = 0; j < deviceWidth; j++) {
+        for (int i = 0; i < bitmap.getHeight(); i++) {
+            for (int j = 0; j < bitmap.getWidth(); j++) {
                 deviceGrid[i][j] = bitmap.getPixel(j, i);
             }
         }
         //bitmap = getBitmapFromView(view);
-        Toast.makeText(getContext(), "" + deviceGrid, Toast.LENGTH_SHORT);
     }
 
     Bitmap getBitmapFromView(View view) {
@@ -83,12 +88,13 @@ public class PixelationView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         frame++;
-
         if (frame % 4 == 1) {
-            if (div < 256)
+            if (div < 256 && div * 2 < deviceWidth / 12)
                 div *= 2;
-            else
-                div = deviceWidth / 4;
+            else {
+                div = deviceWidth / 12;
+                tilesFrameLayout.startAnimation();
+            }
         }
         for (int i = 0; i < deviceHeight; i += div) {
             for (int j = 0; j < deviceWidth; j += div) {
